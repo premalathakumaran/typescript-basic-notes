@@ -1,0 +1,153 @@
+
+// This is a basic "Hello, World!" program in TypeScript
+
+let message: string = "Hello, World!";
+console.log(message);
+
+
+ VARIABLE DECLARATION :
+
+let name: string = "John";
+let age: number = 25;
+let isStudent: boolean = true;
+console.log(`Name: ${name}, Age: ${age}, Is Student: ${isStudent}`);
+
+FUNCTION:
+
+function addNumbers(a: number, b: number): number {
+    return a + b;
+}
+
+let sum: number = addNumbers(5, 10);
+console.log(`Sum: ${sum}`);
+
+ARRAYS:
+
+let fruits: string[] = ["Apple", "Banana", "Cherry"];
+
+for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+}
+
+ INTERFACES:
+
+ interface Person {
+    name: string;
+    age: number;
+}
+
+let person: Person = {
+    name: "Alice",
+    age: 30
+};
+console.log(`Name: ${person.name}, Age: ${person.age}`);
+
+CLASSES: 
+
+class Animal {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    makeSound(): void {
+        console.log(`${this.name} makes a sound`);
+    }
+}
+let dog = new Animal("Dog");
+dog.makeSound();
+
+
+UNION TYPES:
+
+let id: number | string;
+id = 101;  // OK
+id = "E101";  // OK
+console.log(`ID: ${id}`);
+
+
+OPTIONAL PARAMETER: 
+
+function greet(name: string, greeting?: string): string {
+    if (greeting) {
+        return `${greeting}, ${name}!`;
+    } else {
+        return `Hello, ${name}!`;
+    }
+}
+
+console.log(greet("John"));  // Hello, John!
+console.log(greet("John", "Good morning"));  // Good morning, John!
+
+TYPE CASTING:
+
+let value: unknown = "This is a string";
+
+// Type Casting to string
+let strLength: number = (value as string).length;
+console.log(`The length of the string is: ${strLength}`);
+
+TYPE ALIASES
+
+type StringOrNumber = string | number;
+
+let id: StringOrNumber = "123ABC";
+console.log(`ID: ${id}`);
+
+id = 456;  // Now a number
+console.log(`ID: ${id}`);
+
+ ENUMS 
+
+ enum Direction {
+    Up,
+    Down,
+    Left,
+    Right
+}
+
+let move: Direction = Direction.Up;
+
+if (move === Direction.Up) {
+    console.log("Moving up!");
+}
+
+TUPLES
+
+let user: [number, string, boolean] = [1, "Alice", true];
+console.log(`ID: ${user[0]}`);
+console.log(`Name: ${user[1]}`);
+console.log(`Is Active: ${user[2]}`);
+
+
+(INCLUDING ALL THE METHODES LIKE TYPE ALIASES,ENUMS,TUPLES,TYPE CASTING)   -----> THIS ALL METHODES:
+
+// Type Alias
+type UserID = string | number;
+
+// Enum
+enum Role {
+    Admin,
+    User,
+    Guest
+}
+
+// Tuple
+let userTuple: [UserID, string, Role, boolean] = [101, "Alice", Role.User, true];
+
+// Type Casting
+let userId = userTuple[0];  // userId is of type UserID (string | number)
+let numericId = userId as number;  // Type casting to number
+
+// Function to display user information
+function displayUserInfo(user: [UserID, string, Role, boolean]): void {
+    let [id, name, role, isActive] = user;
+    console.log(`User ID: ${id}`);
+    console.log(`Name: ${name}`);
+    console.log(`Role: ${Role[role]}`);
+    console.log(`Active: ${isActive}`);
+}
+
+// Example Usage
+displayUserInfo(userTuple);

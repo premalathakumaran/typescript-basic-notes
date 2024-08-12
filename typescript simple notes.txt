@@ -1,0 +1,765 @@
+
+
+
+Different between Typescript and JavaScript:
+
+1. typescript is ana static type --- when using typescript you will find the error in complie time it self .
+
+empName ="test"  
+empName = 3 (only assign for one time is must be a string or number)(brower unable to read typescript  it can read only javascript .....so the typescript code can be convert to javaascript).
+
+example code 1:  let empName = "Test"
+         let employeeName:string;
+         employeeName = 'Testing'
+         le isPermanent:boolean = true
+
+example code2:
+        const multiply = (number:number ) => {
+         return 10* number
+         }
+         console.log(multiply (10))// output:100
+         console.log(multiply ('ten')) // output:NaN
+
+
+2. javascript is an dynamic type ------- by using javascript you will find the error run time only 
+ 
+  empName = "string"
+  empNmae = 3
+(it is a dyamamic type so we can assign number or  string )
+
+example code1 : let empName = "Test"
+         let employeeName;
+         employeeName = 'Testing';
+         le isPermanent = true;
+
+
+  example code 2 : 
+         const multiply = (number) => {
+         return 10* number
+         }
+         console.log(multiply (10))
+
+
+**TypeScript**: A statically typed superset of JavaScript that adds optional type checking, which helps catch errors during development.
+
+**JavaScript**: A dynamic, loosely typed scripting language widely used for web development, allowing flexible and quick coding but with less compile-time error checking.
+
+
+ARRAYS IN TYPESCRIPT :
+
+// Implicit we will not mention type of the error(without mention the type of array is called implicit arrays).
+
+IN TYPESCRIPT 
+
+let numSample = [ 1,2,3];
+let numString = [ 'a','b','c','d']
+let boolsample = [true,false]
+numberSample.push('a');
+
+// output: when run it, Main error (Argument of type 'string' is not assignable to parameter type of 'number'.
+
+BUT IN JAVASCRIPT 
+
+let numSample = [ 1,2,3];
+let numString = [ 'a','b','c','d']
+let boolSample = [true,false]
+numberSample.push('a');
+console.log(numSample);
+
+// output: [1,2,3,'a'].
+
+EXPLICIT IN ARRAY USING TYPESCRIPT:(syntax)
+
+let numSample:number[] = [ 1,2,3];
+let numString:string[] = [ 'a','b','c','d']
+let boolSample:boolean[] = [true,false]
+
+// DECLARE AND ASSIGN LATER(syntax)
+
+
+let numSample:number[] = [];
+let numString:string[] = []
+numSample.push(1);
+numString.push('d')
+
+// READ ONLY ARRAY IN TYPESCRIPT.
+
+let numSample: readonly number[] = [1,2,3]; (when using both let and const)
+
+numSample.push(4)-----if you try to add any thing on the line  it only show the error.(Property 'push' does not exit on type readonly numberr[]'.
+
+// TYPESCRIPT USING OBJECT.
+
+//IMPLICIT TYPE IN TYPESCRIPT  OR (TYPE INFERENCE)
+
+let employee = {
+     
+empName:'Test',
+age :30,
+isPermanent:true
+}
+
+employee.age = 31
+
+ employee = {        ---- overwriting the value or updating the value.
+empName:'Testing',
+age :31,
+isPermanent:false 
+}
+
+// EXPLICIT TYPE IN TYPESCRIPT 
+
+EXAMPLE METHODE 1 : 
+
+let employee:{empName:string,age:number,isPermanent:boolean}={
+     empName = "Test",
+     age : 30,
+     isPermanent : true
+}
+
+EXAMPLE METHODE 2 : 
+
+type Employee = { empName:string,age:number,isPermanent:boolean
+
+}
+let employee:Employee{}={
+     empName = "Test",
+     age : 30,
+     isPermanent : true,
+}
+
+// OPTIONALS:(optional symbol is ? );
+
+type Employee = { empName:string, age?:number, isPermanent:boolean
+
+}
+let employee:Employee{}={
+     empName = "Test",
+     age : 30,
+     isPermanent : true,
+}
+
+// UNION TYPES IN TYPESCRIPT: UNION TYPE - OR - '|' ----> symbol for union type 
+
+( union types is possible to use more then one type in  variable)
+ _key point_ : union type is used when more then one type is possible used in variable.
+
+
+// IMPLICIT OR TYPE INFERENCE:
+
+Normal variable can not be used in implicit like (let,const, var) , array can used in implicit.
+
+EXAMPLE CODE : 
+
+let unionArray: ['one',1,true]
+
+unionArray.push('two')
+unionArray.push(2)
+unionArray.push(false)
+console.log(unionArray)
+
+// EXPLICIT IN UION TYPE IN TYPESCRIPT
+
+let errorcode:(string | number);
+errorCode = 'prem'
+errorcode = 401
+
+let unionArray:(string|number|boolean)[]=[]
+
+unionArray.push('two')
+unionArray.push(2)
+unionArray.push(false)
+console.log(unionArray)
+
+SAMPLE CODES ARRAY IN TYPESCRIPT:
+
+//   const fruits: string[] = ['Apple', 'Banana', 'Cherry']; 
+// fruits.push('Orange','prem','abi','priya'); 
+// console.log(fruits); 
+
+// const numbers: number[] = [1, 2, 3];
+// numbers.push(4); 
+// console.log(numbers)
+
+   ANY TYPE IN TYPESCRIPT:(any is the one of the type in typescript types like number,string,boolean.)
+
+EXAMPLE CODE:(when using any in typescript it will work like javascript in programming)(Any type is also called as dynamic type)
+    
+let empName:any = "Test"
+console.log(empName)
+let empName=30
+console.log(empName)
+let empName= true
+console.log(empName)
+
+NOTE: most of the time we will not use any in our project beacuse it will not provide type-check to the programming)The most imporant we using typescript only in caase of type-check.)
+
+
+ANY USING IN ARRAY IN TYPESCRITP:
+
+let anyArray:any[] = []
+
+anyArray.push('Test')
+anyArray.push(30)
+anyArray.push(True)
+console.log(anyArray)
+
+ANY USING IN OBJECT IN TYPESCRIPT:
+
+type Employee = {
+     
+    empName:any,
+age:any
+}
+let employee:Employee
+employee = {empName:'Test',age:30}
+employee = {empName:30,age:'Test'}
+console.log(employee)
+
+FUNCTION IN TYPESCRIPT:
+
+1.FUNCTION TYPE:
+   let greet = () => {
+return "Hello"
+}
+
+2.FUNCTION WITH PARAMETER:
+
+let add = (a:number,b:number)=>{
+return  a+b;
+}
+console.log(add(10,10))
+
+3.FUNCTION WITH RETURN TYPE
+
+let add = (a:number,b:number):number=>{
+return  a+b;
+}
+console.log(add(10,10))
+
+4.FUNCTION WITH UNION TYPE PARAMS IN TYPESCRIPT:
+
+let add = (a:number,b:number,c:(number|string)):number =>{
+if(typeof c === 'number'){
+retun a+b+c;
+}
+return a+b;
+}
+console.log(add(10,10,'12'))
+console.log(add(10,10,12))
+
+5.FUNCTION WITH OPTIONAL PARAMS:
+
+let add = (a:number,b:number,c?:(number|string)):number =>{
+if(typeof c === 'number'){
+retun a+b+c;
+}
+console.log(c)
+return a+b;
+}
+console.log(add(10,10))
+
+6.FUNCTION WITH DEFAULT VALUE
+
+let add = (a:number,b:number,c:(number|string)=10):number =>{
+if(typeof c === 'number'){
+retun a+b+c;
+}
+console.log(c)
+return a+b;
+}
+console.log(add(10,10))
+
+7.FUNCTION WITH TYPE ALIAS PARAMS: (type alias will start in caps letter)
+
+type StrOrNum = string|number
+
+let add = (a:number,b:number,c:StrOrNum =10):number =>{
+if(typeof c === 'number'){
+retun a+b+c;
+}
+console.log(c)
+return a+b;
+}
+console.log(add(10,10))
+
+IN TYPE ALIAS PARAMS ITSELF WE CAN USE OBJECT:
+
+type User ={
+name:string,age:number
+}
+let printObject = (user:User) =>{
+console.log(`nae is ${user.name} and age is ${user.age}`)
+}
+printObject({name:'Test',age:30})
+
+8.USING REST PARAMS IN FUNCTION IN TYPESCRIPT:
+  
+let add = (a:number,b:number, ...c:number[]):number =>{
+ 
+ console.log(c)
+ let d = c.reduce((x,y) => x+y,0)
+  return a+b+d;
+
+}
+console.log(add(10,10,1,1,2,3))
+
+9.USING FUNCTION SIGNATURE IN TYPESCRIPT:
+
+(WHEN WE USING RETURN TYPE WE WILL USE number) IN TYPESCRIPT 
+
+ (a.)-----let add :(x:number,y:number,...z:number[])=number;
+
+ add = (a:number,b:number, ...c:number[]):number =>{
+ 
+ console.log(c)
+ let d = c.reduce((x,y) => x+y,0)
+  return a+b+d;
+
+}
+console.log(add(10,10,1,1,2,3))
+
+(WHEN WE DOES NOT USING RETURN TYPE WE WILL USE void) IN TYPESCRIPT:(In some case we create a function without return type on that time we void). 
+
+
+
+(b.)----- let add :(x:number,y:number,...z:number[])=void;
+
+ add = (a:number,b:number, ...c:number[]):number =>{
+ 
+ console.log(c)
+ let d = c.reduce((x,y) => x+y,0)
+  return a+b+d;
+}
+console.log(add(10,10,1,1,2,3))
+
+
+TUPLES IN TYPESCRIPT:(Typed Array).
+
+NORMAL ARRAY IN TUPLE:
+
+EXAMPLE CODE 1:
+ 
+   let userArray = ['john',30,true]
+   userArray[0] = 40
+console.log(userArray)
+
+EXAPLE CODE 2:
+(syntax for tuple in typescript) and also it is called as a typed array .
+
+let userTuple:[string,number,bolean] = ['john',30,true]
+console.log(userTuple);
+
+NOTE: In tuple we can update the value by only of string to string && number to number && boolean to boolean.
+
+if you want to updating the value :
+                 
+let userTuple:[string,number,bolean] = ['john',30,true]
+userTuple[0] = 'prema'
+userTuple[1] = 50
+userTuple[2] = false
+console.log(userTuple);
+
+
+you update by the below the way it show error:( in the order of this you want to apply [string,number,bolean] =['prema',50,false]
+
+let userTuple:[string,number,bolean] = ['john',30,true]
+userTuple[0] = 50
+userTuple[1] = false
+userTuple[2] = 'prema'
+console.log(userTuple);
+
+DISADVANTAGE FOR TUPLE : If you push any value to array without mentioning any variable or type it will Accept with out error For example :(
+
+let userTuple:[string,number,bolean] = ['john',30,true]
+userTuple[0] = 'prema'
+userTuple.push(4)
+console.log(userTuple)
+
+The output for this code is ----- ['john',30,true,4]----- to avoid this problem we using READONLY.
+
+READONLY IN TUPLE IN TYPESCRIPT:(readonly it Allows only the mentioned type like [string,number,bolean]= ['john',30,true] it will not add extra values without mentioning it string,nuber,boolean = 'john,40,true ect..
+{Readonly can be a best pratices -------but in function return type we will not use readonly).
+
+let userTuple: readonly [string,number,bolean] = ['john',30,true]
+
+NAMED IN TUPLE IN TYPESCRIPT:
+
+let userTuple: readonly [userName:string,age:number,isEng:bolean] = ['john',30,true]
+
+ACCESSING NAMED TUPLE IN TYPESCRIPT:(it like a destructuring in javascript)
+
+let [userName,age,isEng]= userTuple 
+console.log(userName)
+
+
+TYPE ALIASES in TYPESCRIPT: (UserName--- first letter must be in caps)Type aliaes is nothing but we giving another name for the default name like example (stirng is default name we have other name is acalled type aliases.)
+
+TYPE ALIASES USING IN PRIMITIVE DATATYPE IN TYPESCRIPT:
+
+EXAMPLE CODE 1: 
+
+type UserName = string
+type YesorNo = boolean
+type Age = number
+
+(THis is type aliases used methode)
+
+let userName:UserName = 'john'
+let isEng:YesorNo = true
+let age:Age = 30
+
+(THis is normale methode)
+let userName:string = 'john'
+let isEng:boolean = true
+let age:number = 30
+
+TYPE ALIASES USED IN ARRAY IN TYPESCRIT:
+
+type NamesArray = string[]
+ let userNames:NamesArray = ['a','b']
+
+OBJECT IN TYPE ALIASES IN TYPESCRIPT:
+
+type User = {
+    name:UserName,
+    age:Age,
+    isEng:YesorNo
+}
+let user:User = {name:'john',age:30,isEng:true}
+
+TYPE ALIASES IN UNION TYPE IN TYESCRIPT:
+
+type StrOrNum = string | number
+let errorCode:StrOrNum = '401'
+errorCode = 401
+
+TUPLEs IN TYPE ALIASES IN TYPPESCRIPT :
+
+type NameAndAge = [name:string,age:number]
+let userTuple:NameAndAge = ['john',30]
+
+
+TYPE CASTING IN TYPESCRIPT :(Type casting is used to change one type to other type.)
+
+SYNTAX: 
+as or <>
+
+<> this barkets will not work in (react.js or react.jsx) it will work in other technologys and languages.
+
+when we using type casting in reactjs or react.jsx we must only use (as keyword):
+ unknown is also one of the type like (null and undefine) in unknown we cannot do any operation diretly, it most commonly used for type casting the number,string ,boolean.
+
+ EXAMPLE FOR TYPE CASTING (UNKNOWN STRING TO STRING)
+
+  let x:unknown = 'Hello'
+
+  console.log((x as string).length)
+  console.log((<string>x).length)
+
+  EXAMPLE FOR TYPE CASTING (UNKNOWN NUMBER TO STRING)
+
+  let y:unknown = 20
+   console.log((y as string).length)// it give OUTPUT like --undefine.
+
+   NOTE: In this (UNKNOWN NUMBER TO STRING) the type only converted from one type to other not the data of the variable .
+
+   // When we using the UNKNOWN in typescript it most used in DOM only.
+   when we using DOM only UNKNOWN is primarilly more helpfull in typescript.
+
+   let input = document.querySelector('iput') as HTMInputElement
+   let inputValue = input.value
+
+
+   ENUMS IN TYPESCRIPT. (group of constantsis called enums)
+Enums can be used to create using of two types in number and string.
+
+Enums used in numbers :
+
+EXAMPLE CODE 1:
+enums Direction{
+    East,
+    West,
+    South,
+    North,
+}
+console.log(Direction.South)
+
+EXAMPLE CODE 2: 
+We can able to asign a value by manully  also,
+
+enums Direction{
+    East = 100
+    West,
+    South,
+    North,
+}
+console.log(Direction.South)
+
+EXAMPLE CODE 3: (In this type we casn assign the value by induivally also)
+
+enum statuscode {
+    success = 200,
+    Unauthorized = 410,
+    ServerError = 500
+}
+
+Enums used in string:(Enums if we using string automallicaly we want to assign the value for the  directions)
+
+enum Direction1 {
+    East ='East',
+    West = 'west',
+    south = 'south',
+    north = 'north',
+}
+console.log(Direction1.south)
+
+INTERFACES IN TYPESCRIPT(only work with Object):(interfaces is the object oriented programming concepts or Oops concepts)
+
+Interface is used to define the set reules.
+
+INTERFACE CREATED USING OF PROPERTIES:
+ interface User {     -----> The assigned valuse must be used
+    name:string,
+    age:number
+ }
+
+ const user:User = {
+    name:'test',
+    age:40
+ }
+
+INTERFACE CREATED USING OF FUNCTION :
+ 
+interfaces Function{
+    (x:nuber,y:number):number
+}
+
+let add:Function = (p1:number,p2:number) => {
+    return p1 + p2
+}
+
+EXTENDING INTERFACES IN TYPESCRIPT:
+
+
+interface Employee extends User {
+    employeeId:number
+}
+const employee:Employee ={
+    name:'john',
+    age:30,
+    employeeId: 100
+}
+
+Different between type aliases and interace:
+
+Interface is always work with Object only it will not work with primitive type.
+ 
+type StrOrNum = string | number
+let errorcode:StrOrNum = '401'
+errorCode = 401
+
+CLASS IN TYPESCRIPT:
+
+class User{   ----------> (In this class User, the first letter must be caps.)
+    id:number
+
+    constructor(x:number){
+        this.id = x
+    }
+}
+let userobject = new User(10)
+ console.log(userobject.id)
+
+
+ INTERFACE IN CLASS IN TYPESCRIPT :  ----> CLASS IMPLEMENTS MULTIPLY INTERFACE:
+
+interface PersonInterface{           ----> FIRST INTEFACE
+    id:number,
+    name:string
+}
+
+interface AddressInterface{          ---->SECOND INTERFACE
+    city:string
+}
+
+CLASS IMPLEMENTS INTERFACE IN TYPESCRIPT:(AND ALSO CLASS IMPLEMENTS MULTIPLY INTERFERNCE)
+ 
+   class Person implements PersonInterface,AddressInterface{
+     
+     id:number
+     name:string
+     city:string
+   
+   constructor(id:numbers,name:string,city:string){
+    this.id =id
+    this.name = name
+    this.city = city
+   }
+   getName = () =>{
+    return this.name
+   }
+   }
+   let person = new Person(100,'john','Tindivanam')
+   console.log(person.name)
+   console.log(person.getName)
+
+   EXTENDS IN TYPESCRIPT: (INHERITANCE IN TYPESCRIPT)  ------>multiply extends is not possible
+
+NOTE: we can implements many times but we only extends one class.
+
+EXAMPLE CODE 1:
+
+class student extends Person{
+studentId:number = 101
+
+     print(){
+        console.log(`name is ${this.name} and id is ${this.student}`)
+     }
+}
+
+
+
+class student extends Person,User{  ----> if you implemented like this it will show error (so that only we can use only one class in etends)
+                                       ---->error: classes can only extend a single class.
+}
+
+ABSTRACT CLASS IN TYPESCRIPT (ABSTRACT CLASS is also called as INCOMPLETE CLASS ) :Generally we creating a parent class it can be used as Abstract class.
+   (CHILD CLASS only have the COMPLETE IMPLEMENTATION)
+
+
+ABSTRACT CLASS - INCOMPLETE CLASS:
+  when we creating the  Abstract we should give Abstract keyword  (keyword-Abstract)
+
+ NOTE : when we keeping the function as Abstract then the class also want to became a Abstract.
+
+If we change the name Property as Abstract we did not need constructor.
+
+
+EXAMPLE CODE: ----> ABSTRACT CLASS - INCOMPLETE CLASS
+
+abstract class Person{
+    abstract name:string     -----> ABSTRACT CLASS (this is an Property)
+
+    abstract print():void    ----> ABSTRACT CLASS
+}
+
+// CHILD CLASS 
+
+class student extends Person{
+          name: string
+
+    constructor(x:string){
+        super()
+        this.name = x
+    }
+
+
+    print = () => {
+        console.log(this.nme)
+    }
+}
+
+let studentObject = new student('john')
+
+studentObject.print()
+
+// ABSTRACT VS INTERFACE : IN TYPESCRIPT (there is no interface in javascript ........interface only there in typescript)( interface will not present in runtime it will present in compile time)
+  
+NOTE : why we using abstract means interface will not present in runtime on that runtime we will use abstract.
+
+DATA MODIFIERS IN TYPESCRIPT: to setting the visiblitity for Property and methodes in the class.
+------> They is three value in data modifiers in typescript, they are Public,Protected and Private.
+
+EXAMPLE CODE 1:
+
+class Person {
+    Public name:string         ---> by default name as PUBLIC DATA MODIFIERS
+
+    constructor(name:string){
+    this.name = name
+}
+}
+class Employee extend person{
+
+     print = () =>{
+        console.log(this.name)
+     }
+
+     changeName = (name:string) => {
+        this.name = name
+     }
+}
+let empObject = new Employee('john')
+
+empObject.print()
+
+empObject.changeName('Test')
+
+empObject.print()
+
+empObject.name ='Testing'
+
+empObject.print()
+
+READONLY ---> Readonly is not a data modifiers is just a keyword.
+
+
+GENERICS IN TYPESCRIPT: Generics is helpful for writting a Resuable code, and also ANY is used for writting a resuable code.
+
+USING ANY WE CAN CREATE RESUABLE CODE IN TYPESCRIPT:(Generics is replacement of ANY, by using ANY we can able to asign the different value)
+
+EXAMPLE CODE : //RESUABLE CODE
+                                                 |
+const toArray = (x:any,y:any,z:any) => {         |   const toArray = (x:number,y:number,z:number) => {  
+     return [x,y,z]                              |     return [x,y,z] 
+}                                                |     } 
+let arr = toArray('1','2',3)                     |     let arr = toArray(1,2,3) 
+console.log(arr)                                 |     console.log(arr)
+                                                 |
+
+GENERICS:(Generics is an Type independed we can create any type and we can able to use resuable code .) (when using Generics we will not mention any type like number,string etc. just we give one Alphabite letter (it can be any letter, but it must be in caps.) )
+ 
+ EXAMPLE CODE 1: 
+
+const toArray = <P>(x:P,y:P,z:P) => {          
+     return [x,y,z]                            
+} 
+                                                         |
+let genericArray = toArrayGeneric<string>('a','b','c')   |     let genericArray = toArrayGeneric<number>(1,2,3)   
+console.log(genericArray)                                |      console.log(genericArray)
+                                                         |
+ 
+ USING MULTIPLE TYPES WE CAN CREATE GENERICS IN TYPESCRIPT:
+
+let printValues = <x,y,z>(a:x,b:y,c:z) => {
+    console.log(`a is ${type of a} b is ${type of b} c is ${typeof c}`)
+}
+printValues("one",true,1)
+
+TYPE AND GENERICS TOGETHER IN TYPESCRIPT :
+
+let printValues = <x,y,z>(a:x,b:y,c:z,d:string) => {
+    console.log(`a is ${type of a} b is ${type of b} c is ${typeof c}`)
+}
+printValues("one",true,1,'Hi')
+
+
+GENERICS ARRAY IN TYPESCRIPT : 
+
+let printArray = <T>(array:T[]) => {
+    console.log(array.join(','))
+}
+printArray([true,false,true])
+
+TYPE INTERFACE CREATED AS GENERICS IN TYPESCRIPT:
+
+interace Dictionary <T,U>{
+      key:1,
+      value:U
+}
+let dict:Dictionary<string,number> = {key:'one',value:1}
+let dict1:Dictionary<string,number> = {key:'one',value:true}
+
+FUNCTION INTERFACE CREATED AS GENERICS IN TYPESCRIPT:
+

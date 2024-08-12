@@ -1,0 +1,51 @@
+
+MAIN POINT TO BE USED : Open PowerShell (No need for Administrator):
+
+You don't need to run PowerShell as an administrator for this step.
+
+
+
+
+THE POINTS FOR RUNNING THE TYPESCRIPT FOR THE FIRST TIME :
+
+1. Change the Execution Policy for the Current User:
+Run the following command in PowerShell
+
+ MAIN COMMENT IS : --->  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+2.Verify the Change:
+You can check that the policy has been changed by running
+
+THIS IS TO CHECK THE FIRST COMMENT : ----> Get-ExecutionPolicy -Scope CurrentUser
+
+3.Run Your TypeScript Command Again:
+Now, try running your tsc --init command again, and it should work without any issues.
+
+TO RUN YOUR TYPESCRIPT -----> tsc --init (AFTER RUNNING THIS COMMENT IT SHOULD SHOWE THE tsconfig.json FILE.)
+                       -----> tsc --watch 
+
+
+tsc --init is the correct TypeScript command to initialize a new tsconfig.json file in your project. This command creates a default configuration file (tsconfig.json) in the directory where it's run, which is essential for configuring TypeScript's compiler options.
+
+tsconfig.json FILE YOU WNAT CHANGE THE -------> IN MODULES TABLE CHANGE THIS TO THIS ("rootDir": "./", ===> "rootDir": "./src",)
+                                       
+                                       -----> IN EMIT TABLE CHANGE THIS TO THIS ( "outDir": "./"  ===>  "outDir": "./disnt")
+
+4. TO CREATE HTML FILE TO DISPLAY THE CONSOLE LOG OUTPUT IN THE BROWSER how to see console.log output in brower in typescript while after running tsc --watch 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TypeScript Console Output</title>
+</head>
+<body>
+  <h1>Check the Console for Output</h1>
+  <script src="dist/index.js"></script> <!-- Path to your compiled JS file -->
+</body>
+</html>
+
+   --------->  THEN AFTER SETTING UP CLICK (RIGHT ON HTML FILE THEN GIVE OPEN WITH LIVE SERVER)
+
+SAMPLE LINK FOR CREATING THE FILE : ------> (" https://chatgpt.com/c/0893bcb8-05c5-499d-a58b-b11950415331 ")
