@@ -3,6 +3,18 @@
 
 Different between Typescript and JavaScript:
 
+
+In typescript when you are doing a API call in redux-toolkit we need to the empty reducer.
+
+
+CREATEASYNCTHUNK : 
+
+createAsyncThunk() in Redux Toolkit is a function used to create asynchronous actions that handle side effects like API calls and automatically dispatch the necessary actions (pending, fulfilled, rejected) based on the promise's lifecycle.
+
+
+
+
+
 1. typescript is ana static type --- when using typescript you will find the error in complie time it self .
 
 empName ="test"  
