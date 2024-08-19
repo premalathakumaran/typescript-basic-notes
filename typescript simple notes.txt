@@ -144,6 +144,8 @@ let employee:Employee{}={
 
 // OPTIONALS:(optional symbol is ? );
 
+In TypeScript, optional properties are denoted with a ? and indicate that a property may or may not be present in an object.
+
 type Employee = { empName:string, age?:number, isPermanent:boolean
 
 }
