@@ -161,7 +161,9 @@ let employee:Employee{}={
  _key point_ : union type is used when more then one type is possible used in variable.
 
 
-// IMPLICIT OR TYPE INFERENCE:
+// IMPLICIT OR TYPE INFERENCE: 
+
+(The common important thing is IMPLICIT is called JAVASCRIPT  and  EXPLICIT is called TYPESCRIPT)
 
 Normal variable can not be used in implicit like (let,const, var) , array can used in implicit.
 
