@@ -104,6 +104,8 @@ numSample.push(4)-----if you try to add any thing on the line  it only show the 
 
 //IMPLICIT TYPE IN TYPESCRIPT  OR (TYPE INFERENCE)
 
+In TypeScript, implicit typing using an object means defining an object's type based on the properties and values assigned to it, without explicitly declaring the type.
+
 let employee = {
      
 empName:'Test',
